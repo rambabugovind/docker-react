@@ -1,0 +1,13 @@
+FROM node:alpine
+
+WORKDIR /app
+
+COPY package.json .
+RUN npm install
+
+# We dont really need the below COPY stmt as we are referencing the current dir from inside the container
+# in the docker-compose.yml file
+# But we still have it here just for reference purposes
+COPY . .
+
+CMD ["npm", "run", "start"]
